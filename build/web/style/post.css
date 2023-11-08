@@ -1,0 +1,41 @@
+/* 
+
+CSS File Naming Convention:
+
+Every JavaScript function that "Makes" a reusable UI component shall have a 
+component specific CSS file that's named like the component. Every CSS selector 
+in the file shall begin with a CSS class that matches the CSS file name.
+
+To follow the CSS naming convention, 
+   all CSS selectors in this file (named "post.css")must start with ".post".
+   This "localizes your styling" so that it only applies within an element 
+   classed "post".          
+
+*/
+
+.post {  /* applies to any dom element that's classed "post" */
+    background-color: black;
+    margin: 1rem;
+    text-align: center;
+}
+
+.post .imageContainer { /* applies to any div that's in an "post" dom element */
+    background-color: #FFD18B;
+    width: 100%;
+}
+
+.post img { /* applies to any img tag that's in an "post" dom element */
+    width:95%;
+    border-radius:0.5rem;
+    box-shadow: 0rem 4rem 2rem rgba(0,0,0,0.8);
+    /* box shadow: left offset, right offset, size of blur, color */
+}
+
+.post h5 { /* applies to any img tag that's in an "post" dom element */
+    margin-left: 1rem; 
+    text-align: left;
+}
+
+.post h3 { /* applies to any img tag that's in an "post" dom element */
+     color:black;
+}

@@ -1,0 +1,12 @@
+.postContent p {
+    margin-left: 1.5rem;
+}
+.postContent .flexContainer {
+    display:flex; 
+    flex-direction: row;
+    background-color: grey;
+}
+.postContent .flexContainer .post .obj {
+    width: 50%; /* to fit three columns inside the flexContainer */
+    box-sizing: border-box; /* makes padding and border counted in the width */
+}

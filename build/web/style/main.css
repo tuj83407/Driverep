@@ -1,0 +1,152 @@
+/* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+        padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+        you'll see a horizontal because the footer becomes a little wider than 100%                            */
+* { 
+    box-sizing: border-box;
+}
+
+body { 
+    margin:0;                   /* no white border around browser window */
+    font-family: sans-serif;    /* no tails on the font like Times New Roman */
+    background-color: #323232;  /* light grey - will show through the content area */
+}
+
+#titleNav {
+    
+    position: fixed; 
+    width: 100%; /* changing to position fixed, you need to add 100% if you want to fill the width */
+
+    /* the next two rules will layout the title followed by the nav side by side in a row */
+    display:flex; 
+    flex-direction: row;
+    justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+
+    padding: 0.5rem;
+    background-color: #74A5FD;
+
+    /* give a little "3D"  effect to the edges of titleNav and footer */
+    box-shadow: 0px 0px 5px black;
+    color: white;
+    font-family: nfsFont; 
+    font-weight: bold;
+    background-color:rgb(0, 0, 0);
+}
+
+#pageTitle { 
+    white-space:nowrap;
+    overflow:hidden;
+    display:inline-block;
+    padding:.75rem;
+    padding-bottom: 0rem;
+    font-size:3rem;
+    letter-spacing: .094rem; 
+    transition: .2s ease-out 100ms;
+    margin:0;
+}
+
+#pageTitle span:nth-child(even){
+    letter-spacing: -1.3rem;
+    color: transparent;
+}
+
+#pageTitle span{
+    transition:all .5s ease-out 200ms;
+}
+
+#pageTitle span:nth-child(odd){
+    color: #FFD18B;
+}
+#pageTitle:hover span:nth-child(even){
+    letter-spacing: 0rem;
+    color: white;
+}
+
+#title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem; /* spaces out letters a bit */
+    white-space: nowrap;  /* don't allow the title to wrap */
+}
+
+#nav {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    white-space: nowrap;  /* don't allow nav links to wrap */
+}
+#nav a {  
+    text-decoration:none;  
+    color: #FFD18B; 
+}
+
+#content {
+    color: #dbdbdb; 
+    padding: 1rem;
+    padding-top:6rem; /* make sure fixed titleNav does not cover up any content */
+    padding-bottom: 2rem; /* make sure fixed footer doesn't cover up any content */
+    font-size: 1.15rem;
+    line-height: 2rem; 
+}
+
+#content a {  
+    color: orangered;
+    text-decoration:none;
+}
+
+#content a:visited {  
+    color: green; 
+}
+
+#footer {
+    background-color:   black; 
+    color: #FFD18B;
+    /* give a little "3D"  effect to the edges of titleNav and footer */
+    box-shadow: 0px 0px 5px #888888;  
+
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    text-align: center;
+
+    position: fixed;
+    bottom: 0px; 
+    left: 0px; 
+    z-index: 1; /* make sure footer is on top of content which would have default z-index value of 0 */
+
+    width: 100%;    /* fixed elements don't fill out the width automatically, so set the width */	 
+}
+
+.indent {
+    margin-left: 1.5rem;
+}
+
+pre {
+    margin-bottom:1.5rem;
+    margin-right: 2rem;
+    margin-left: 1rem;
+    line-height:1.25rem;
+    font-size: 0.95rem;
+
+    padding:0.5rem;
+    padding-left:0rem;
+    background-color: #CCCCDD; 
+
+    border-radius: 0.25rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4);
+}
+
+@media only screen and (max-width: 40rem) {
+    #nav {
+        text-align:left;
+    }
+    #titleNav{
+        flex-direction: column;
+    }
+
+    #pageTitle {
+        text-align:left;
+    }
+
+
+}

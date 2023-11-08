@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <meta
+            charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="pics/kntmedia.ico" />  
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/NavRouter.css" rel="stylesheet" type="text/css" />  
+        <link href="style/post.css" rel="stylesheet" type="text/css" />  
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <link href="style/account.css" rel="stylesheet" type="text/css" />  
+        <link href="style/postContent.css" rel="stylesheet" type="text/css" /> 
+        
+        <title>DriveRep</title>
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="pageTitle">
+                <span>D</span><span>rive</span><span>R</span><span>ep</span>&trade;
+            </div>
+            <div id="nav">
+
+            </div>
+        </div>
+        <div id="content">
+
+            <!-- HTML comment: 
+                The content div is empty. It will get content "injected into it"
+                by the NavRouter component.
+            -->
+
+        </div> <!-- end of content area -->
+        <div id="footer">
+            Kiran Nixon
+        </div>
+
+
+        <!-- Suggest you keep these in the same order as you see them in the NB project pane --> 
+        <script> "use strict";</script>
+        <script src="js/reusable/MakeNavRouter.js"></script>
+        <script src="js/reusable/MakeNavRouter_2.js"></script>
+        <script src="js/reusable/MakePost.js"></script>
+        <script src="js/reusable/TableUtils.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+        <script src="js/reusable/MakeClickSort.js"></script>
+        <script src="js/reusable/Utils.js"></script>
+        
+        <script src="js/CRUD_icons.js"></script>
+
+        
+        <script src="js/components/account.js"></script>
+        <script src="js/components/blog.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/postContent.js"></script>
+        <script src="js/components/clickSortPostContent.js"></script>
+        <script src="js/components/clickSortUserContent.js"></script>
+        <script src="js/components/liveSortPostContent.js"></script>
+        <script src="js/components/liveSortUserContent.js"></script>
+        <script src="js/components/register.js"></script>
+        <script src="js/components/webUserMods.js"></script>
+        <script src="js/components/postMods.js"></script>
+
+        <script>
+
+            // Home | Account | Search | Tutorial | Blog
+
+            var myNavList = [
+
+                
+                // action attribute is a function name - no quotes around home.
+                {linkText: "Home", linkURL: "#/home", action: home},
+                {
+                    header: "Account",
+                    subMenu: [
+                        {linkText: "Register", linkURL: "#/userInsert", action: webUserMods.insert},
+                        {linkText: "Log In", linkURL: "#/Login", action: account.logon},
+                        {linkText: "Log Out", linkURL: "#/Logout", action: account.logoff},
+                        {linkText: "Profile", linkURL: "#/Profile", action: account.getProfile}
+                    ]
+                },
+                {
+                    header: "Search",
+                    subMenu: [
+                        {linkText: "JS objects", linkURL: "#/post", action: postContent},
+                        {linkText: "Users", linkURL: "#/UserContent", action: clickSortUserContent},
+                        {linkText: "AllPosts", linkURL: "#/PostContent", action: clickSortPostContent},
+                        {linkText: "Live Posts", linkURL: "#/LivePostContent", action: liveSortPostContent},
+                        {linkText: "Live Users", linkURL: "#/LiveUserContent", action: liveSortUserContent}
+                        //{linkText: "Slide Show"},
+                        //{linkText: "Click Sort"}
+                    ]
+                },
+                {
+                    header: "Tutorial",
+                    subMenu: [
+                        {linkText: "Proposal"},
+                        {linkText: "Proof Of Concept"},
+                        {linkText: "Demo", linkURL: "#/postInsert", action: postMods.insert},
+                        {linkText: "Tutorial Home"}
+                    ]
+                },
+
+                // action attribute is a function name - no quotes around blog.
+                {linkText: "Blog", linkURL: "#/blog", action: blog}
+            ];
+            myNavList['#/postInsert'] = postMods.insert;
+            var myNav = MakeNavRouter_2({
+                navId: "nav",           // this is where the nav bar will be injected
+                navList: myNavList,     // the list of link post (linkText, linkURL, actions)
+                contentId: "content",   // the id where content is to be injected
+                startLink: "#/home"     // routing will set this as the first link. 
+            });
+            
+            myNav.addRoute({
+                linkURL: "#/insertPost",
+                action: postMods.insert
+            });
+            myNav.addRoute({
+                linkURL: "#/postUpdate",
+                action: postMods.update
+            });
+            myNav.addRoute({
+                linkURL: "#/userUpdate",
+                action: webUserMods.update
+            });
+        </script>
+    </body>
+</html>
